@@ -106,8 +106,23 @@ export CUDA_VISIBLE_DEVICES=""
 
 # Code Executions <a name="executions"></a>
 
-For basic execution demo, after finishing up all the required `TODO`s in `trainers/*.py`,  
-execute the following command:
+1. Most of the code in the provided starter code repository should be executed using the [module option](https://stackoverflow.com/questions/22241420/execution-of-python-code-with-m-option-or-not).
+   For example, if you would like to execute the code `data_processing/dummy_data.py` , do:
+
+```bash
+python3 -m data_processing.dummy_data
+```
+
+​	Notice that the `.py ` in `dummy_data.py` is gone
+
+2. Training Arguments: 
+
+   Before executing any training-related codes, make sure to skim through `trainers/args.py` to learn
+   what arguments are used in the code.
+
+3. For basic execution demo, after finishing up all the required `TODO`s in `trainers/*.py`,  
+   execute the following command:
+
 ```bash
 sh scripts/train_dummy.sh
 ```
