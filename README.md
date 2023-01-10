@@ -113,12 +113,12 @@ export CUDA_VISIBLE_DEVICES=""
 python3 -m data_processing.dummy_data
 ```
 
-​	Notice that the `.py ` in `dummy_data.py` is gone
+​		Notice that the `.py ` in `dummy_data.py` is gone
 
 2. Training Arguments: 
 
    Before executing any training-related codes, make sure to skim through `trainers/args.py` to learn
-   what arguments are used in the code.
+   what arguments are used in the code. We will walk through some important ones in the **training** section in `README.md`.
 
 3. For basic execution demo, after finishing up all the required `TODO`s in `trainers/*.py`,  
    execute the following command:
