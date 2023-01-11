@@ -66,9 +66,9 @@ pip install -r requirements.txt
 This is a nice [guide](https://realpython.com/python-virtual-environments-a-primer/) about setting up virtual environment, we recommend doing the followings:
 
 ```bash
-python3 -m venv where_ever/you/want/cs188
+python3 -m venv where_ever/you/want/cs162
 
-source where_ever/you/want/cs188/bin/activate
+source where_ever/you/want/cs162/bin/activate
 
 # And use the following to deactivate within a virtualenv.
 deactivate
