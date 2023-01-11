@@ -1,4 +1,4 @@
-# UCLA CS188 Course Project Guideline
+# UCLA CS162 Course Project Guideline
 
 # Table of Contents
 
