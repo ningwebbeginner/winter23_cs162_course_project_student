@@ -26,14 +26,14 @@ Goto the above link to install the **miniconda3** corresponding to your OS.
 Next do the followings:
 
 ```bash
-# cs188 is the name of the conda environment, you can name it anything you like.
-conda create -n cs188 python==3.8
+# cs162 is the name of the conda environment, you can name it anything you like.
+conda create -n cs162 python==3.8
 
 # You can list all the conda envs using the following command.
 conda info --envs
 
 # Activate the conda env.
-conda activate cs188
+conda activate cs162
 
 # Initialize.
 conda init
@@ -49,7 +49,7 @@ conda deactivate
 And then install all the required packages in your environment simply by:
 
 ```bash
-conda activate cs188
+conda activate cs162
 
 pip install --upgrade pip
 
