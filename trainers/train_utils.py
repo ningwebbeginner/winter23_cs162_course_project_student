@@ -19,6 +19,22 @@ from transformers import (
     AutoTokenizer,
 )
 
+def evaluate_standard(preds, labels, scoring_method):
+
+    # The accuracy, precision, recall and F1 scores to return
+    acc, prec, recall, f1 = 0.0, 0.0, 0.0, 0.0
+
+    ########################################################
+    # TODO: Please finish the standard evaluation metrics.
+    # You need to compute the accuracy, precision, recall
+    # and F1 score for the predictions and gold labels.
+    # Please also make your sci-kit learn scores are computed
+    # using `scoring_method` for the `average` argument.
+    raise NotImplementedError("Please finish the TODO!")
+    # End of TODO
+    ########################################################
+
+    return acc, prec, recall, f1
 
 def pairwise_accuracy(guids, preds, labels):
 
@@ -36,16 +52,21 @@ def pairwise_accuracy(guids, preds, labels):
      
     return acc
 
-
 if __name__ == "__main__":
 
     # Unit-testing the pairwise accuracy function.
     guids = [0, 0, 1, 1, 2, 2, 3, 3]
     preds = np.asarray([0, 0, 1, 0, 0, 1, 1, 1])
-    labels = np.asarray([1, 0,1, 0, 0, 1, 1, 1])
-    acc = pairwise_accuracy(guids, preds, labels)
-    
-    if acc == 0.75:
+    labels = np.asarray([1, 0, 1, 1, 0, 1, 1, 1])
+    acc, prec, rec, f1 = evaluate_standard(preds, labels, "binary")
+    pair_acc = pairwise_accuracy(guids, preds, labels)
+
+    if acc == 0.75 and prec == 1.0 and round(rec,2) == 0.67 and f1 == 0.8:
+        print("Your `evaluate_standard` function is correct!")
+    else:
+        raise NotImplementedError("Your `evaluate_standard` function is INCORRECT!")
+
+    if pair_acc == 0.5:
         print("Your `pairwise_accuracy` function is correct!")
     else:
         raise NotImplementedError("Your `pairwise_accuracy` function is INCORRECT!")

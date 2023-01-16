@@ -42,8 +42,7 @@ def mask_tokens(inputs, tokenizer, args, special_tokens_mask=None):
         special_tokens_mask = special_tokens_mask.bool()
 
     ##################################################
-    # Optional TODO: this is an optional TODO that can get you more familiarized
-    # with masked language modeling.
+    # Optional TODO: only needed to be completed if you are doing MLM training
 
     # First sample a few tokens in each sequence for the MLM, with probability
     # `args.mlm_probability`.
@@ -51,9 +50,11 @@ def mask_tokens(inputs, tokenizer, args, special_tokens_mask=None):
     # function `masked_fill_`, and `torch.bernoulli`.
     # Check the inputs to the bernoulli function and use other hinted functions
     # to construct such inputs.
-    raise NotImplementedError("Please finish the TODO!")
+    probability_matrix = torch.full(labels.size(), args.mlm_probability)
+    probability_matrix.masked_fill_(special_tokens_mask, value=0.0)
+    masked_indices = torch.bernoulli(probability_matrix).bool()
 
-    # Remember that the "non-masked" parts should be filled with ignore index.
+    # The "non-masked" parts in labels should be filled with ignore index (args.mlm_ignore_index).
     raise NotImplementedError("Please finish the TODO!")
 
     # For 80% of the time, we will replace masked input tokens with  the
