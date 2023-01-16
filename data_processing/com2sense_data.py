@@ -39,28 +39,28 @@ class Com2SenseDataProcessor(DataProcessor):
         if data_dir is None:
             data_dir = self.data_dir
 
+        examples = []   # Store your examples in this list
+
         ##################################################
-        # TODO: Use json python package to load the data
-        # properly.
-        # We recommend separately storing the two
-        # complementary statements into two individual
-        # `examples` using the provided class
-        # `Coms2SenseSingleSentenceExample` in `utils.py`.
+        # TODO:
+        # Some instructions for reading data:
+        # 1. Use json python package to load the data properly.
+        # 2. Use the provided class `Coms2SenseSingleSentenceExample` 
+        # in `utils.py` for creating examples
+        # 3. Store the two complementary statements as two 
+        # individual examples 
         # e.g. example_1 = ...
         #      example_2 = ...
         #      examples.append(example_1)
         #      examples.append(example_2)
-        # Make sure to add to the examples strictly
-        # following the `_1` and `_2` order, that is,
-        # `sent_1`'s info should go in first and then
-        # followed by `sent_2`'s, otherwise your test
-        # results will be messed up!
-        # For the guid, simply use the row number (0-
-        # indexed) for each data instance, i.e. the index
-        # in a for loop. Use the same guid for statements
-        # coming from the same complementary pair.
-        # Make sure to handle if data do not have
-        # labels field.
+        # 4. Make sure that the order is maintained.
+        # i.e. sent_1 in the data is stored/appended first and
+        # sent_2 in the data is stored/appened after it.
+        # 5. For the guid, simply use the row number (0-
+        # indexed) for each data instance.
+        # Use the same guid for statements from the same complementary pair.
+        # 6. Make sure to handle if data do not have labels field.
+        # This is useful for loading test data
         raise NotImplementedError("Please finish the TODO!")
         # End of TODO.
         ##################################################

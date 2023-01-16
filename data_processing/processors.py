@@ -23,6 +23,8 @@ from torch.utils.data import DataLoader, SequentialSampler
 
 # Processors.
 from .dummy_data import DummyDataProcessor
+from .com2sense_data import Com2SenseDataProcessor
+from .semeval_data import SemEvalDataProcessor
 from transformers import (
     AutoTokenizer,
 )
@@ -131,7 +133,7 @@ class SemEvalDataset(Dataset):
     def __getitem__(self, idx):
 
         ##################################################
-        # TODO: Please finish this function.
+        # TODO: (Optional) Please finish this function (refer DummyDataset __getitem__)
         # Note that `token_type_ids` may not exist from
         # the outputs of tokenizer for certain types of
         # models (e.g. RoBERTa), please take special care
@@ -189,7 +191,7 @@ class Com2SenseDataset(Dataset):
     def __getitem__(self, idx):
 
         ##################################################
-        # TODO: Please finish this function.
+        # TODO: Please finish this function (refer DummyDataset __getitem__)
         # Note that `token_type_ids` may not exist from
         # the outputs of tokenizer for certain types of
         # models (e.g. RoBERTa), please take special care
@@ -211,6 +213,17 @@ class Com2SenseDataset(Dataset):
 
 
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    # Basic args.
+    parser.add_argument(
+        "-d", "--dataset",
+        default="dummy",
+        type=str,
+        help=("dataset name"),
+    )
+    data_args = parser.parse_args()
+
     class dummy_args(object):
         def __init__(self):
             self.model_type = "bert"
@@ -219,24 +232,52 @@ if __name__ == "__main__":
             self.max_seq_length = 32
 
     args = dummy_args()
+    args.dataset = data_args.dataset
 
     tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
 
-    processor = DummyDataProcessor(data_dir="datasets/dummies", args=args)
-    examples = processor.get_test_examples()
+    if args.dataset == "dummy":
+        processor = DummyDataProcessor(data_dir="datasets/dummies", args=args)
+        examples = processor.get_dev_examples()
+        dataset = DummyDataset(examples, tokenizer,
+                            max_seq_length=args.max_seq_length,
+                            args=args)
+        sampler = SequentialSampler(dataset)
+        dataloader = DataLoader(dataset, sampler=sampler, batch_size=2)
 
-    dataset = DummyDataset(examples, tokenizer,
-                           max_seq_length=args.max_seq_length,
-                           args=args)
-    sampler = SequentialSampler(dataset)
-    dataloader = DataLoader(dataset, sampler=sampler, batch_size=2)
-    epoch_iterator = tqdm(dataloader, desc="Iteration")
+        for step, batch in enumerate(dataloader):
+            for each in batch:
+                assert each.size()[0] == 2, "Batch not loading correctly! Some error!"
+            break
+        print ("Dummy Dataset loading correctly.")
+    
+    elif args.dataset == "com2sense":
+        processor = Com2SenseDataProcessor(data_dir="datasets/com2sense", args=args)
+        examples = processor.get_dev_examples()
+        dataset = Com2SenseDataset(examples, tokenizer,
+                            max_seq_length=args.max_seq_length,
+                            args=args)
+        sampler = SequentialSampler(dataset)
+        dataloader = DataLoader(dataset, sampler=sampler, batch_size=2)
 
-    for step, batch in enumerate(epoch_iterator):
-        for each in batch:
-            print(each.size())
-        break
-    pass
+        for step, batch in enumerate(dataloader):
+            for each in batch:
+                assert each.size()[0] == 2, "Batch not loading correctly! Some error!"
+            break
+        print ("Com2Sense Dataset loading correctly.")
+    
+    elif args.dataset == "sem-eval":
+        processor = SemEvalDataProcessor(data_dir="datasets/semeval_2020_task4", args=args)
+        examples = processor.get_dev_examples()
+        dataset = SemEvalDataset(examples, tokenizer,
+                            max_seq_length=args.max_seq_length,
+                            args=args)
+        sampler = SequentialSampler(dataset)
+        dataloader = DataLoader(dataset, sampler=sampler, batch_size=2)
 
-    # You can write your own unit-testing utilities here similar to above.
-    pass
+        for step, batch in enumerate(dataloader):
+            for each in batch:
+                assert each.size()[0] == 2, "Batch not loading correctly! Some error!"
+            break
+        print ("SemEval Dataset loading correctly.")
+

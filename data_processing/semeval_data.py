@@ -37,20 +37,27 @@ class SemEvalDataProcessor(DataProcessor):
         if data_dir is None:
             data_dir = self.data_dir
 
+        examples = []   # Store your examples in this list
+
         ##################################################
-        # NOTE: this TODO is optional
-        # TODO: Use csv.DictReader or pd.read_csv to load
-        # the csv file and process the data properly.
-        # We recommend separately storing the correct and
-        # the incorrect statements into two individual
-        # `examples` using the provided class
-        # `SemEvalSingleSentenceExample` in `utils.py`.
+        # TODO: (Optional) 
+        # Some instructions for reading data:
+        # 1. Use csv.DictReader or pd.read_csv to load the csv file 
+        # and process the data properly.
+        # 2. Use the provided class `SemEvalSingleSentenceExample` 
+        # in `utils.py` for creating examples
+        # 3. Store the two complementary statements as two 
+        # individual examples 
         # e.g. example_1 = ...
         #      example_2 = ...
         #      examples.append(example_1)
         #      examples.append(example_2)
-        # For the guid, simply use the row number (0-
+        # 4. Make sure that the order is maintained.
+        # i.e. sent_1 in the data is stored/appended first and
+        # sent_2 in the data is stored/appened after it.
+        # 5. For the guid, simply use the row number (0-
         # indexed) for each data instance.
+        # Use the same guid for statements from the same complementary pair.
         raise NotImplementedError("Please finish the TODO!")
         # End of TODO.
         ##################################################
