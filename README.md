@@ -1,5 +1,5 @@
 # UCLA CS162 Course Project Guideline
-### Disclaimer : We are still updating the provided code, and we expect some small changes soon. You will be notified once everything has been finalized.
+
 # Table of Contents
 
 1. [Installations](#installations)
