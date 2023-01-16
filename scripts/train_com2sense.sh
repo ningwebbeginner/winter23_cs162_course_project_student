@@ -25,5 +25,4 @@ python3 -m trainers.train \
   --score_average_method "binary" \
   --iters_to_eval 20 40 \
   --overwrite_output_dir \
-  --eval_split "dev" \
   # --max_eval_steps 1000 \
