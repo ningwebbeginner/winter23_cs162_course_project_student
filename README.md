@@ -1,5 +1,5 @@
-# UCLA CS188 Course Project Guideline
-
+# UCLA CS162 Course Project Guideline
+### Disclaimer : We are still updating the provided code, and we expect some small changes soon. You will be notified once everything has been finalized.
 # Table of Contents
 
 1. [Installations](#installations)
@@ -26,14 +26,14 @@ Goto the above link to install the **miniconda3** corresponding to your OS.
 You can use the following commands for various conda operations:
 
 ```bash
-# cs188 is the name of the conda environment, you can name it anything you like.
-conda create -n cs188 python==3.8
+# cs162 is the name of the conda environment, you can name it anything you like.
+conda create -n cs162 python==3.8
 
 # You can list all the conda envs using the following command.
 conda info --envs
 
 # Activate the conda env.
-conda activate cs188
+conda activate cs162
 
 # Initialize conda.
 conda init
@@ -49,7 +49,7 @@ conda deactivate
 Once you create the above environment, install all the required packages in your environment simply by:
 
 ```bash
-conda activate cs188
+conda activate cs162
 
 pip install --upgrade pip
 
@@ -66,9 +66,9 @@ pip install -r requirements.txt
 This is a nice [guide](https://realpython.com/python-virtual-environments-a-primer/) about setting up virtual environment, we recommend doing the followings:
 
 ```bash
-python3 -m venv where_ever/you/want/cs188
+python3 -m venv where_ever/you/want/cs162
 
-source where_ever/you/want/cs188/bin/activate
+source where_ever/you/want/cs162/bin/activate
 
 # And use the following to deactivate within a virtualenv.
 deactivate
@@ -106,8 +106,23 @@ export CUDA_VISIBLE_DEVICES=""
 
 # Code Executions <a name="executions"></a>
 
-For basic execution demo, after finishing up all the required `TODO`s in `trainers/*.py`,  
-execute the following command:
+1. Most of the code in the provided starter code repository should be executed using the [module option](https://stackoverflow.com/questions/22241420/execution-of-python-code-with-m-option-or-not).
+   For example, if you would like to execute the code `data_processing/dummy_data.py` , do:
+
+```bash
+python3 -m data_processing.dummy_data
+```
+
+​		Notice that the `.py ` in `dummy_data.py` is gone
+
+2. Training Arguments: 
+
+   Before executing any training-related codes, make sure to skim through `trainers/args.py` to learn
+   what arguments are used in the code. We will walk through some important ones in the **training** section in `README.md`.
+
+3. For basic execution demo, after finishing up all the required `TODO`s in `trainers/*.py`,  
+   execute the following command:
+
 ```bash
 sh scripts/train_dummy.sh
 ```
