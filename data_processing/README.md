@@ -1,4 +1,4 @@
-# Datasets Instructions
+# Milestone 2: Data Loaders and Processors
 
 In the followings we will illustrate the basic schema of each dataset that we will use,  
 as well as the `TODO`s and how to test your implementations.
@@ -55,10 +55,9 @@ DummyExample(guid=2, text='I am a bad boy.', label=0)
 ]
 ```
 
-Please finish the `TODO` blocks in `com2sense_data.py`.  
-(Make sure to use the `json` python package.)
+You need to finish the `TODO` blocks in `_read_data` function in `com2sense_data.py`.
 
-Once done, execute the following command:
+Once done, execute the following command to test your implementation:
 ```bash
 # At the root directory.
 python3 -m data_processing.com2sense_data
@@ -80,9 +79,9 @@ Correct Statement, Incorrect Statement, Right Reason1, Confusing Reason1, Confus
 The datasets in Sem-Eval are of csv files, and we highly recommend using [csv.DictReader](https://docs.python.org/3/library/csv.html) to load the files.
 Or else, you can consider using [pandas.read\_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) but it might be more straightforward to use the generic `csv` package mentioned above.
 
-The `TODO` blocks in `semeval_data.py` are **optional**, but Sem-Eval may be helpful for the model performance on Com2Sense.
+The `TODO` here is **optional**, but Sem-Eval may be helpful for the model performance on Com2Sense. You need to implement the `_read_data` function in `semeval_data.py`.
 
-Once done, execute the following command:
+Once done, execute the following command to test your implementation:
 ```bash
 # At the root directory.
 python3 -m data_processing.semeval_data
@@ -96,11 +95,17 @@ SemEvalSingleSentenceExample(guid=0, text='when it rains humidity forms', label=
 
 # The Dataset Class
 
-In `processors.py` please carefully read the `DummyDataset` and finish the 
-`TODO`s in `Com2SenseDataset`. You may **optionally** finish the `TODO`s in `semeval_data.py`, which may be helpful for improving the model performance on Com2Sense. 
+In `processors.py` please carefully read the `DummyDataset`.
+Using this, complete the `TODO` for `__getitem__` function in `Com2SenseDataset` class in `processors.py` file.
 
+Once done, execute the following command to test your implementation:
+```bash
+# At the root directory.
+python3 -m data_processing.processors -d com2sense
+```
+
+You may **optionally** finish the `TODO` for `__getitem__` function in `semeval_data.py` as well, which may be helpful for improving the model performance on Com2Sense.
 
 # Initializations
 
-Please take a look at the `__init__.py` to make sure that  
-you understand how to call the data processors and classes in other codes.
+Please take a look at the `__init__.py` to make sure that you understand how to call the data processors and classes in other codes.

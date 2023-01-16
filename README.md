@@ -23,7 +23,7 @@ We recommend two ways of getting started to setup the necessary environment:
 
 Goto the above link to install the **miniconda3** corresponding to your OS.
 
-Next do the followings:
+You can use the following commands for various conda operations:
 
 ```bash
 # cs188 is the name of the conda environment, you can name it anything you like.
@@ -35,7 +35,7 @@ conda info --envs
 # Activate the conda env.
 conda activate cs188
 
-# Initialize.
+# Initialize conda.
 conda init
 
 # Install the pip in this conda environment.
@@ -46,7 +46,7 @@ conda install pip
 conda deactivate
 ```
 
-And then install all the required packages in your environment simply by:
+Once you create the above environment, install all the required packages in your environment simply by:
 
 ```bash
 conda activate cs188
@@ -79,12 +79,12 @@ The rest of installing the packages should remain the same as in using conda.
 
 # Basic Hardware Guidelines <a name="hardware"></a>
 
-For using cloud services, please refer to the slides in the respective TA section.
+For using cloud services, please refer to the slides/recording in the first TA section.
 This readme will only contain more strictly project-related instructions.
 
 ## Using GPUs
 
-When your OS features any GPUs, please only access to one of them as our task is not that heavy, and hence does not need to waste computational resources using multi-GPUs in general (but feel free to do so if you'd like).
+When your OS features any GPUs, please only access to one of them as our task is not that heavy, and hence does not need to waste computational resources using multi-GPUs in general (but feel free to do so if you'd like). Below are commands that you can use to control GPUs while running your processes (run them before running your main script).
 
 ```bash
 # Check your GPU status, this will print all the essential information about all the GPUs.
@@ -113,11 +113,15 @@ sh scripts/train_dummy.sh
 ```
 And immediately you should see training and evaluation loops being successfully executed.
 
+NOTE: The testing scripts are not exhaustive, but should be used as reference. Testing script working correctly doesn't ensure your code is 100% correct. There could still be some errors. 
+
 
 # Datasets <a name="datasets"></a>
 
 All the required `TODO` blocks are in the codes under `data_processing` folder.  
 Please refer to the README under `data_processing` folder for data schema and execution examples.
+
+NOTE: The testing scripts are not exhaustive, but should be used as reference. Testing script working correctly doesn't ensure your code is 100% correct. There could still be some errors. 
 
 
 # Training <a name="training"></a>
