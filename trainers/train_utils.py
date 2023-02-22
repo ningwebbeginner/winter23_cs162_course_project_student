@@ -30,7 +30,10 @@ def evaluate_standard(preds, labels, scoring_method):
     # and F1 score for the predictions and gold labels.
     # Please also make your sci-kit learn scores are computed
     # using `scoring_method` for the `average` argument.
-    raise NotImplementedError("Please finish the TODO!")
+    acc = accuracy_score(labels, preds)
+
+
+    prec, recall, f1, _ = precision_recall_fscore_support(labels, preds, average=scoring_method)
     # End of TODO
     ########################################################
 
@@ -46,7 +49,23 @@ def pairwise_accuracy(guids, preds, labels):
     # statement coming from the same complementary
     # pair is identical. You can simply pair the these
     # predictions and labels w.r.t the `guid`. 
-    raise NotImplementedError("Please finish the TODO!")
+    pairs = {}
+    for guid, pred, label in zip(guids, preds, labels):
+        if guid not in pairs:
+            pairs[guid] = ([], [])
+        pairs[guid][0].append(pred)
+        pairs[guid][1].append(label)
+
+
+    correct_count = 0
+    total_count = 0
+    for pair in pairs.values():
+        if len(pair[0]) == 2:
+            total_count += 1
+            if pair[0][0] == pair[1][0] and pair[0][1] == pair[1][1] or pair[0][0] != pair[1][0] and pair[0][1] != pair[1][1]:
+                correct_count += 1
+
+    acc = correct_count / total_count if total_count > 0 else 0.0
     # End of TODO
     ########################################################
      
